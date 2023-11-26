@@ -1,28 +1,44 @@
 
-const {createContext,useState,useContext}=require("react");
+const { createContext, useState, useContext } = require("react");
 
-const AuthContext=createContext();
+const AuthContext = createContext();
 
-export const AuthProvide= ({children})=>{
-    const [user,setUser]=useState(null);
-    const login=async (userData)=>{
+export const AuthProvide = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const [token, setToken] = useState(null);
+
+    const signup = async (userData) => {
         console.log(userData);
 
         setUser(userData);
     }
 
-    const logout=()=>{
-        setUser(null);
+    const login = async (userData) => {
+        console.log(userData);
+        const { username, password } = userData;
+        if (username === user.username && password === userData.password) {
+            const randomBytes = new Uint8Array(12);
+            window.crypto.getRandomValues(randomBytes);
+            const randomString = Array.from(randomBytes)
+                .map((byte) => ('0' + byte.toString(16)).slice(-2))
+                .join('');
+            setToken(randomString);
+        }
+    }
+
+    const logout = () => {
+        setToken(null);
+        console.log(token)
     }
 
     return (
-        <AuthContext.Provider value={{user,login,logout}}>
+        <AuthContext.Provider value={{ user, token, signup, login, logout }}>
             {children}
         </AuthContext.Provider>
     )
 }
 
 
-export const useAuthContext=()=>{
+export const useAuthContext = () => {
     return useContext(AuthContext);
 }
