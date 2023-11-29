@@ -16,7 +16,7 @@ export const AuthProvide = ({ children }) => {
     const login = async (userData) => {
         console.log(userData);
         const { username, password } = userData;
-        if (username === user.username && password === userData.password) {
+        if (username === user.username && password === user.password) {
             const randomBytes = new Uint8Array(12);
             window.crypto.getRandomValues(randomBytes);
             const randomString = Array.from(randomBytes)

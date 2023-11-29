@@ -22,14 +22,44 @@ function LogIn() {
     };
 
     return (
-        <div>
-            <span>Username</span>
-            <input placeholder="Username" value={userName} onChange={(e) => setUserName(e.target.value)} />
-            <span>Password</span>
-            <input placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-
-            <button onClick={handleLogin}>Log In</button>
+        <div className="container mt-5">
+      <h1 className="display-4 text-center mb-4">Log In</h1>
+        <div className="row">
+          <div className="col-md-6 offset-md-3 bg-dark text-light p-4">
+            <div className="form-group mb-3">
+              <label htmlFor="username" className="form-label">
+                Username
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="username"
+                placeholder="Username"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+            </div>
+      
+            <div className="form-group mb-3">
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+      
+            <button className="btn btn-primary" onClick={handleLogin}>
+              Log In
+            </button>
+          </div>
         </div>
+      </div>
     )
 
 }

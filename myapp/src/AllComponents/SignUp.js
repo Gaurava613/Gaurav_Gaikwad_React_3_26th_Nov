@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Signup from "../comp2/signup";
+// import Signup from "../comp2/signup";
 import { useAuthContext } from "../components/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -38,19 +38,59 @@ const SignUp = () => {
     }
 
     return (
-        <div>
-            <span>User Name</span>
-            <input placeholder="UserName" value={username} onChange={(e) => setUserName(e.target.value)} />
-
-            <span>Email</span>
-            <input placeholder="UserName" value={email} onChange={(e) => setEmail(e.target.value)} />
-
-            <span>Password</span>
-            <input placeholder="UserName" value={password} onChange={(e) => setPassword(e.target.value)} />
-
-            <button onClick={handleSignUp}>Sign Up</button>
-
+      
+        <div className="container mt-5">
+      <h1 className="display-4 text-center mb-4">Sign Up</h1>
+        <div className="row">
+          <div className="col-md-6 offset-md-3 bg-dark text-light p-4">
+            <div className="form-group mb-3">
+              <label htmlFor="username" className="form-label">
+                User Name
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="username"
+                placeholder="UserName"
+                value={username}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+            </div>
+      
+            <div className="form-group mb-3">
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+      
+            <div className="form-group mb-3">
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+      
+            <button className="btn btn-primary" onClick={handleSignUp}>
+              Sign Up
+            </button>
+          </div>
         </div>
+      </div>
     )
 
 
